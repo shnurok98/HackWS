@@ -1,0 +1,161 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Hack-WS</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+	<!-- <script type="text/javascript" src="auth.js"></script> -->
+	<script type="text/javascript" src="data.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="graph.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<div class="armor"></div>
+	<div id="showBar">
+		<img src="images/show.png" alt="Show" class="showIcon" onclick="onShowBars(posAr)">
+	</div>
+
+<!-- 	<div class="statusBar">
+		<div id="userBar">
+			<p id="username">admin</p>
+			<img src="images/avatar.png" alt="user" id="userAvatar">
+			<button type="button" onclick="logOut()">
+				<img src="images/logout.png" alt="">
+			</button>
+		</div>
+	</div> -->
+
+	<div class="sideBar">
+		
+		<div class="statusBar">
+			<div id="userBar">
+				<p id="username">admin</p>
+				<img src="images/avatar.png" alt="user" id="userAvatar">
+				<button type="button" onclick="logOut()">
+					<img src="images/logout.png" alt="">
+				</button>
+			</div>
+		</div>
+		
+		<form name="filterForm" id="filterForm">
+			<h5> <input type="radio" name="type" value="none" onchange="onFilter(this)">Без фильтра</h5>
+
+			<h4 class="h">Фильтр стадий проектов</h4>
+			
+				<h5> <input type="radio" name="type" value="Крупный" onchange="onFilter(this)">Крупный</h5>
+				
+				<h5> <input type="radio" name="type" value="средний" onchange="onFilter(this)">Средний</h5>
+			
+				<h5> <input type="radio" name="type" value="мелкий" onchange="onFilter(this)">Мелкий</h5>
+				
+			<h4 class="h">Фильтр графика проектов</h4>	
+				
+			<select id="sl_filter" onchange="onSlFilt(this)">
+				
+			</select>
+			
+		</form>
+	</div>
+
+	<div class="screen">
+
+		<div class="majorFigures">
+
+			<!-- глав цифры -->
+			<div class="num">
+				<div class="numname">Всего проектов</div>
+				<div class="numnum" id="numall">50</div>
+			</div>
+			<div class="num">
+				<div class="numname">Проекты "исполняем"</div>
+				<div class="numnum" id="numred">10</div>
+			</div>
+			<div class="num">
+				<div class="numname">Проекты "влияем"</div>
+				<div class="numnum" id="numwa">2</div>
+			</div>
+			<div class="num">
+				<div class="numname">Обязательств</div>
+				<div class="numnum" id="numres">500</div>
+			</div>
+			<div class="num">
+				<div class="numname">Выполненых обязательств</div>
+				<div class="numnum" id="numresall">140</div>
+			</div>
+			<div class="num">
+				<div class="numname">Ежегодные обязательства</div>
+				<div class="numnum" id="numreswa">25</div>
+			</div>
+
+		</div>
+
+		<div class="mainBlock">
+			<!-- графики -->
+			
+				<div class="graf1" id="allproj">
+					<canvas id="densityChart" width="1000" height="400"></canvas>
+				</div>
+			
+			
+			
+
+				<div class="graf2" id="allreskpi">
+					<canvas id="oilChart" width="1000" height="500"></canvas>
+				</div>
+				
+
+			
+			
+				<div class="graf3" id="gisproj">
+					<canvas id="densityChart1" width="1000" height="400"></canvas>
+				</div>
+			
+			
+			
+
+				<div class="graf4" id="qisres">
+					<canvas id="oilChart1" width="1000" height="600"></canvas>
+				</div>
+				
+
+			
+		</div>
+		
+		<div class="rightBlock">
+			<div class="podrobno">
+				<!-- правая панель(верх)-->
+				<div>
+					<select id="sl_proj" onchange="onSlProj(this)">
+						
+					</select>
+
+					<select id="sl_kv"  onchange="onSlKv(this)">
+						
+					</select>
+				</div>
+			
+				<div>
+					<p>Контрольная дата: <i id="ctrlDate"></i></p>
+					<p>Процент: <i id="perc"></i></p>
+				</div>
+			</div>
+
+			<div class="ochenPodrobno">
+				<!-- инф о проекте -->
+				Источник: <i id="tegName"></i>
+				<p>Ответственное лицо: <i id="otvnameLiz"></i></p> 
+				<p>Статус: <i id="statusObiaz"></i></p> 
+				<p>Ответственность Союза: <i id="otvSouza"></i></p> 
+				<p>Ответственный по источнику: <i id="otvSouzaIst"></i></p> 
+				<p>Формулировка: <i id="description"></i></p>
+			</div>
+		</div>
+
+	</div>
+		
+</body>
+
+</html>
